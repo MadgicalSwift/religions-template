@@ -33,6 +33,14 @@ export class UserService {
     return this.userRepository.findOne({ where: { mobileNumber } });
   }
 
+  async getUserPreferredLanguage(
+    mobileNumber: string,
+    botID: string,
+  ): Promise<string> {
+    const user = await this.findUserByMobileNumber(mobileNumber);
+    return user ? user.language : 'English';
+  }
+
   async saveUser(user: User): Promise<User | undefined> {
     return this.userRepository.save(user);
   }
