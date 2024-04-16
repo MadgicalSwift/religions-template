@@ -62,5 +62,22 @@ export class UserService {
       newUser.button_response = button_response;
       return this.userRepository.save(newUser);
     }
-  }
+  };
+
+  async saveLanguage(mobileNumber: string, botID: string,language:string): Promise<User> {
+    const existingUser = await this.findUserByMobileNumber(mobileNumber);
+    if (existingUser) {
+      console.log("language recieved", language)
+      existingUser.language = language;
+      return this.userRepository.save(existingUser);
+    } else {
+      const newUser = new User();
+      newUser.mobileNumber = mobileNumber;
+      newUser.botID = botID; 
+      newUser.button_response = '';
+      newUser.language = language; 
+      return this.userRepository.save(newUser);
+    }
+  };
+
 }

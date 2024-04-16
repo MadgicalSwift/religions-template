@@ -21,7 +21,9 @@ export abstract class MessageService {
   }
 
   abstract sendWelcomeMessage(from: string, language: string);
+  abstract backToMainMenu(from: string, language: string);
   abstract sendLanguageChangedMessage(from: string, language: string);
   abstract sendMainMenuMessage(from: string, language: string);
-  abstract backToMainMenu(from: string, language: string);
+  abstract sendPredefinedQuestionResponse(from: string, language: string, question: string);
 }
+
