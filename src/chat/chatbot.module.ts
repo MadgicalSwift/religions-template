@@ -9,11 +9,12 @@ import { SwiftchatMessageService } from 'src/swiftchat/swiftchat.service';
 import { MessageService } from 'src/message/message.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'src/model/user.entity';
-
+import { askMeFlowService } from './askMeFlow';
 @Module({
   imports: [SwiftchatModule,TypeOrmModule.forFeature([User])], // Import SwiftchatModule
   providers: [
     ChatbotService,
+    askMeFlowService,
     // IntentClassifier,
   UserService,
     {

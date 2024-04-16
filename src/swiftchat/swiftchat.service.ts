@@ -23,8 +23,6 @@ export class SwiftchatMessageService extends MessageService {
   }
   async sendWelcomeMessage(from: string, language: string) {
     const localisedStrings = LocalizationService.getLocalisedString(language);
-    console.log(localisedStrings.welcomeMessage);
-
     const requestData = this.prepareRequestData(
       from,
       localisedStrings.welcomeMessage,
@@ -106,6 +104,11 @@ export class SwiftchatMessageService extends MessageService {
             body: localisedStrings.chooseLanguage,
             reply: localisedStrings.chooseLanguage,
           },
+          {
+            type: 'solid',
+            body: localisedStrings.askMeButton,
+            reply: localisedStrings.askMeButton,
+          },
         ],
         allow_custom_response: false,
       },
@@ -116,5 +119,30 @@ export class SwiftchatMessageService extends MessageService {
       this.apiKey,
     );
     return response;
+  };
+
+  async backToMainMenu(from: string, language: string) {
+    const localisedStrings = LocalizationService.getLocalisedString(language);
+    const requestData = {
+      to: from,
+      type: 'button',
+      button: {
+        body: {
+          type: 'text',
+          text: {
+            body: localisedStrings.backToMainMenuHeading,
+          },
+        },
+        buttons: localisedStrings.backToMainMenu,
+        allow_custom_response: false,
+      },
+    };
+    const response = await this.sendMessage(
+      this.baseUrl,
+      requestData,
+      this.apiKey,
+    );
+    return response;
   }
+
 }

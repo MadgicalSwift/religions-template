@@ -11,18 +11,18 @@ export class UserService {
   ) {}
   async createUser(
     mobileNumber: string,
-    language: string,
     botID: string,
   ): Promise<User> {
     const existingUser = await this.findUserByMobileNumber(mobileNumber);
     if (existingUser) {
-      existingUser.language = language;
+      existingUser.mobileNumber = mobileNumber;
       return this.userRepository.save(existingUser);
     } else {
       const newUser = new User();
       newUser.mobileNumber = mobileNumber;
-      newUser.language = language;
+      newUser.language = 'English';
       newUser.botID = botID;
+      newUser.button_response = '';
       return this.userRepository.save(newUser);
     }
   }
@@ -43,5 +43,24 @@ export class UserService {
 
   async saveUser(user: User): Promise<User | undefined> {
     return this.userRepository.save(user);
+  };
+
+  async updateButtonResponse(
+    mobileNumber: string,
+    botID: string,
+    button_response: string
+  ): Promise<User> {
+    const existingUser = await this.findUserByMobileNumber(mobileNumber);
+    if (existingUser) {
+      existingUser.button_response = button_response;
+      return this.userRepository.save(existingUser);
+    } else {
+      const newUser = new User();
+      newUser.mobileNumber = mobileNumber;
+      newUser.language = 'English';
+      newUser.botID = botID;
+      newUser.button_response = button_response;
+      return this.userRepository.save(newUser);
+    }
   }
 }

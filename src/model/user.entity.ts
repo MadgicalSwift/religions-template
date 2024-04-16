@@ -10,6 +10,10 @@ export class User {
 
   @Column()
   language: string;
+
   @Column()
   botID: string;
+
+  @Column()
+  button_response: string;
 }
