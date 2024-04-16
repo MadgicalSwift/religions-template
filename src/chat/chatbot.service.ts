@@ -48,8 +48,8 @@ export class ChatbotService {
       await this.message.sendMainMenuMessage(from, userData.language);
     }
     else if(button_response && localisedStrings.button_categories.includes(button_response.body)){
-        await this.message.sendPredefinedQuestionResponse(from,UserData.language,button_response.body);
-        await this.userService.updateButtonResponse(from, botID,localisedStrings.button_categories[0]);
+      await this.message.sendPredefinedQuestionResponse(from,UserData.language,button_response.body);
+      await this.userService.updateButtonResponse(from, botID,localisedStrings.button_categories[0]);
     }
     else if(button_response && localisedStrings.languageButtons.includes(button_response.body)){
       let language= await this.userService.saveLanguage(from, botID, button_response.body);
