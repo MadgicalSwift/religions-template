@@ -20,7 +20,7 @@ export class ChatbotService {
     let botID = process.env.BOT_ID;
     let language = await this.userService.getUserPreferredLanguage(from,botID)
     //  if text will come hi then send welcome message
-    if(text.body =="Hi"){
+    if(text.body =="hi"){
       console.log("text",text)
       await this.message.sendWelcomeMessage(from,language)
       await this.message.sendMainMenuMessage(from, language)
