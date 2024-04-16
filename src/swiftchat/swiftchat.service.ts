@@ -83,33 +83,7 @@ export class SwiftchatMessageService extends MessageService {
             body: localisedStrings.mainMenuHeading,
           },
         },
-        buttons: [
-          {
-            type: 'solid',
-            body: localisedStrings.questionsOne,
-            reply: localisedStrings.questionsOne,
-          },
-          {
-            type: 'solid',
-            body: localisedStrings.questionsTwo,
-            reply: localisedStrings.questionsTwo,
-          },
-          {
-            type: 'solid',
-            body: localisedStrings.questionsThree,
-            reply: localisedStrings.questionsThree,
-          },
-          {
-            type: 'solid',
-            body: localisedStrings.chooseLanguage,
-            reply: localisedStrings.chooseLanguage,
-          },
-          {
-            type: 'solid',
-            body: localisedStrings.askMeButton,
-            reply: localisedStrings.askMeButton,
-          },
-        ],
+        buttons: localisedStrings.predefinedQuestions,
         allow_custom_response: false,
       },
     };

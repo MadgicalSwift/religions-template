@@ -5,11 +5,6 @@ export const localisedStrings = {
   language: 'English',
   chooseLanguage: 'Choose Language',
   mainMenuHeading: 'Explore the textbook',
-  questionsOne: '🔄 How does karma influence Hinduism?',
-  questionsTwo: "✋ Significance of Islam's Five Pillars?",
-  questionsThree: "🌟 Main principles of Buddhism's Eightfold Path?",
-  questionsFour: '🌍 Importance of tikkun olam in Judaism?',
-  askMeButton: 'Ask a question',
   askButtonList: ['Ask a question', 'Ask a new question'],
   backToMianMenuList: 'Go back to main menu',
   askMeResponse: 'Have a question related to Bhagwad Geeta, ask away by writing it down in the text bar',
@@ -25,6 +20,34 @@ export const localisedStrings = {
       type: 'solid',
       body: 'Ask a new question',
       reply: 'Ask a new question',
+    },
+  ],
+
+  predefinedQuestions: [
+    {
+      type: 'solid',
+      body: '🔄 How does karma influence Hinduism?',
+      reply: 'How does karma influence Hinduism?',
+    },
+    {
+      type: 'solid',
+      body: '✋ Significance of Islams Five Pillars?',
+      reply: 'Significance of Islams Five Pillars?',
+    },
+    {
+      type: 'solid',
+      body: '🌟 Main principles of Buddhisms Eightfold Path?',
+      reply: '🌟 Main principles of Buddhisms Eightfold Path?',
+    },
+    {
+      type: 'solid',
+      body: '🌍 Importance of tikkun olam in Judaism?',
+      reply: 'Importance of tikkun olam in Judaism?',
+    },
+    {
+      type: 'solid',
+      body: 'Ask a question',
+      reply: 'Ask a question',
     },
   ],
 };
