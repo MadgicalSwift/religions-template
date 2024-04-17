@@ -93,6 +93,16 @@ Let's explore the operational flow of the religious chatbot template to understa
   - After updating the predefinedQuestions array, make corresponding changes in the `button_categories` list to reflect the updated questions. Each entry in the `button_categories` list should align with the corresponding question in the predefinedQuestions array.
   - Additionally, ensure that the answers to the predefined questions are updated accordingly in the `answer` list. The answers should be arranged in the answers list in the same order as the corresponding questions in the predefinedQuestions array.
 
+## AskMeFlow
+
+  - The `AskMeFlow.ts` file in the chat folder handles the flow for asking a new question. Here's how you can update it:
+
+  - `sendAskMeMessage` Function: Update the `sendAskMeMessage` function to fetch and display the prompt for users to ask a new question. This function prompts users to enter their question and sends it to the chatbot for processing.
+
+  - `sendQuestionResponse` Function: Modify the `sendQuestionResponse` function to handle the responses to new questions. After receiving a question from the user, this function fetches a demo response and sends it back to the user.
+
+  - Integration with `Chatbot.service.ts `File: When updating the AskMeFlow file, ensure that it integrates seamlessly with the main chatbot file. Update the parameters and function calls in the chatbot file to reflect the changes made in the AskMeFlow file.
+
 
 # All Set!
 With the necessary changes implemented, dependencies installed, and webhook URL configured, we're ready to proceed. Let's get started!
