@@ -7,7 +7,7 @@ import { User } from './user.entity';
 export class UserService {
   constructor(
     @InjectRepository(User)
-    private userRepository: Repository<User>,
+    public userRepository: Repository<User>,
   ) {}
   async createUser(
     mobileNumber: string,
