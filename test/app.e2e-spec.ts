@@ -132,43 +132,6 @@ it("should send an ask me message when the user clicks on the 'ask a question'or
     );
   });
 
-    // Should send a predefined question response when the user clicks on a question button
-    // it("should send a predefined question response when the user clicks on a question button", async () => {
-    //   jest.spyOn(userService.userRepository, 'findOne').mockResolvedValue({
-    //     id: '359a2e1e-ddb9-4cc5-8029-062bdf54bd66',
-    //     mobileNumber: '1234567890',
-    //     botID: '0238981860238953',
-    //     button_response: '',
-    //     language: 'English',
-    //   });
-
-    //   const body = {
-    //     from: '1234567890',
-    //     text: null,
-    //     button_response: { body: 'Question Button' },
-    //     persistent_menu_response: null,
-    //   };
-
-    //   jest.spyOn(userService, 'findUserByMobileNumber').mockResolvedValue({
-    //     id: '359a2e1e-ddb9-4cc5-8029-062bdf54bd66',
-    //     mobileNumber: '1234567890',
-    //     botID: '0238981860238953',
-    //     button_response: '',
-    //     language: 'English',
-    //   });
-
-    //   jest.spyOn(LocalizationService, 'getLocalisedString').mockResolvedValueOnce(english);
-
-    //   jest.spyOn(messageService, 'sendPredefinedQuestionResponse').mockResolvedValueOnce({ id: '359a2e1e-ddb9-4cc5-8029-062bdf54bd66' });
-
-    //   await chatbotService.processMessage(body);
-
-    //   expect(userService.findUserByMobileNumber).toHaveBeenCalledWith('1234567890');
-    //   expect(LocalizationService.getLocalisedString).toHaveBeenCalledWith('English');
-    //   expect(messageService.sendPredefinedQuestionResponse).toHaveBeenCalledWith('1234567890', 'English', 'Question Button');
-    //   expect(messageService.backToMainMenu).toHaveBeenCalledWith('1234567890', 'English');
-    // });
-
   it('should update the users language preference when the user clicks on a language button', async () => {
     // Mock dependencies
     jest.spyOn(userService.userRepository, 'findOne').mockResolvedValue({

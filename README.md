@@ -1,6 +1,6 @@
-#  Chatbot NestJS Boilerplate
+# Religious Chatbot Template
 
-In this comprehensive guide, we introduce you to our Chatbot Starter Kit, a resource designed to empower developers in building robust chatbot applications. Whether you are just starting your journey in chatbot development or are an experienced developer seeking an efficient solution, this document is your go-to resource for mastering the use of our starter kit.
+Welcome to our guide to building your personalized religious chatbot with our simple template! In this tutorial, we'll walk you through the process of customizing the template to suit your needs and creating your very own religious chatbot. Let's begin!
 
 
 # Prerequisites
@@ -11,24 +11,91 @@ Before you begin, ensure you have met the following requirements:
 * MySQL database accessible
 
 ## Getting Started
-### Installation
-* Fork the repository
-Click the "Fork" button in the upper right corner of the repository page. This will create a copy of the repository under your GitHub account.
+### Installation and setup
+Before moving on to the development part, let's set up a few things that are needed. Follow the below-mentioned steps
+ 
+* Clone the GitHub repository: Open this GitHub Repo and fork it in your organization. Once you have forked it, clone the repository in your preferred IDE. using this command
+git clone "URL" 
+Move to the working directory using the cd .\religious-template\ command
 
+* Install the required packages: 
+Node.js and npm installed 
+Nest.js CLI installed (npm install -g @nestjs/cli)
+MySQL database accessible 
 
-* Clone this repository:
-```
-https://github.com/madgicaltechdom/chatbot-nestjs-boilerplate.git
-```
-* Navigate to the Project Directory:
-```
-cd chatbot-nestjs-boilerplate
-```
-* Install Project Dependencies:
+* Update Environment Variables: In the cloned repository, you will find a demo .env.text file. Change the file name to .env and add your configuration details, like swift API URL, API key, data_base name, DB_Host, etc.
+
 ```bash
-$ npm install
+API_URL = API_URL
+BOT_ID = BOT_ID
+API_KEY = API_KEY
+DATA_BASE=DATA_BASE
+DB_HOST=DB_HOST
+DB_USER=DB_USER
+DB_PASSWORD=DB_PASSWORD
 ```
+# Webhook URL Setup
+Here's a step-by-step guide to get you started smoothly:
 
+1. ### Sign up for Ngrok: 
+Begin by accessing this URL and creating an account on Ngrok. Follow the sign-up process diligently to acquire your authorization token.
+
+2. ### Configure Ngrok: 
+Open your terminal and input the commandngrok config add-authtoken <TOKEN>, replacing <TOKEN> with your authorization token. This step authorizes Ngrok to function properly
+
+3. Open a new terminal and run this command:
+ngrok http 3000. This will generate a forwarding URL. Copy and save this.
+
+4. Open Postman or any other API platform
+
+5. Generate a new PUT request and insert the API https://v1-api.swiftchat.ai/api/bots/<bot-id>/webhook-url into the URL field, ensuring to replace <bot-id> with your specific bot ID.
+
+6. Add the Bearer API-Key in the authorization tab
+
+7. Add this to the body and send the request. By doing so, the webhook URL will be in the bot for sending and receiving responses.
+`{"webhook_url": "<Forwarding URL/religiousChatbot>"}`
+
+
+# Understanding the Flow
+Let's explore the operational flow of the religious chatbot template to understand its functionality and potential customization options:
+
+1. When a user initiates a conversation with a greeting like 'hi', the chatbot warmly welcomes them and presents predefined questions along with options to ask a new question or choose a language. These predefined questions cover various topics related to religion.
+
+2. Upon selecting one of the predefined questions, the chatbot promptly responds with the stored answer and provides two options: 'Back to Main Menu' and 'Ask a New Question'. This allows users to easily navigate back to the main menu or continue exploring by asking more questions.
+
+3. If the user opts to ask a question, the chatbot prompts them to type their question. Once the user submits their question, the chatbot provides a demo response along with the same options: 'Back to Main Menu' and 'Ask a New Question'.
+
+4. Additionally, users have the option to change the language of the chatbot. Upon selecting the 'Change Language' button, the chatbot presents the user with a choice between Hindi and English.
+
+5. When users choose the 'Ask a New Question' button, the functionality mirrors that of the 'Ask a Question' button, allowing users to seamlessly ask additional questions.
+
+6. Lastly, clicking the 'Back to Main Menu' button triggers the chatbot to present the menu button options, enabling users to explore different functionalities and topics within the chatbot.
+
+# Making Modifications
+  Now that we've completed the setup phase and made the initial adjustments, let's proceed to the development phase, where you'll have the opportunity to customize your chatbot.
+
+  ## Update strings:
+   - Navigate to the cloned repository and locate the i18n folder.
+   - Within the i18n folder, you'll find files for English and possibly other languages.
+   - Open the English-localized file, which contains all the text strings and button labels used in our chatbot template.
+   - Update the strings like the `welcomeMessage`, `askMeResponse`, `questionsDefaultString`, `mainMenuHeading`, `button_categories`.
+
+ ## Update buttons:
+   - Open the same file within the cloned repository. Look for the section where buttons are defined, typically labeled as `predefinedQuestions`.
+   - Within this section, you'll find an array of button objects representing the main menu options which includes some predefined questions and other options.
+   - To add or update buttons, simply modify the existing objects or add new ones as needed. Each button object typically includes properties such as type, body (display text), and reply (the message sent back to the bot when the button is clicked).
+   - You can customize the button options according to your requirements. For example, you may want to add more predefined questions button remove any.
+
+ ## To add or update predefined question buttons and their answers:
+
+  - Open the same file and Locate the `predefinedQuestions` button array within the file.
+  - Add or update the predefined questions by modifying the contents of the `predefinedQuestions` array. Each question should be represented as a button object with properties like type, body, and reply.
+  - After updating the predefinedQuestions array, make corresponding changes in the `button_categories` list to reflect the updated questions. Each entry in the `button_categories` list should align with the corresponding question in the predefinedQuestions array.
+  - Additionally, ensure that the answers to the predefined questions are updated accordingly in the `answer` list. The answers should be arranged in the answers list in the same order as the corresponding questions in the predefinedQuestions array.
+
+
+# All Set!
+With the necessary changes implemented, dependencies installed, and webhook URL configured, we're ready to proceed. Let's get started!
 ## Running the app
 
 ```bash
@@ -55,65 +122,4 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-# Add the following environment variables:
-
-```bash
-API_URL = API_URL
-BOT_ID = BOT_ID
-API_KEY = API_KEY
-DATA_BASE=DATA_BASE
-DB_HOST=DB_HOST
-DB_USER=DB_USER
-DB_PASSWORD=DB_PASSWORD
-```
-# API Endpoints
-```
-POST api/message: Endpoint for handling user requests. 
-Get/api/status: Endpoint for checking the status of  api
-```
-# folder structure
-
-```bash
-src/
-├── app.controller.ts
-├── app.module.ts
-├── main.ts
-├── chat/
-│   ├── chat.service.ts
-│   └── chatbot.model.ts
-├── common/
-│   ├── exceptions/
-│   │   ├── custom.exception.ts
-│   │   └── http-exception.filter.ts
-│   ├── middleware/
-│   │   ├── log.helper.ts
-│   │   └── log.middleware.ts
-│   └── utils/
-│       └── date.service.ts
-├── config/
-│   └── database.config.ts
-├── i18n/
-│   ├── en/
-│   │   └── localised-strings.ts
-│   └── hi/
-│       └── localised-strings.ts
-├── localization/
-│   ├── localization.service.ts
-│   └── localization.module.ts
-│
-├── message/
-│   ├── message.service.ts
-│   └── message.service.ts
-└── model/
-│   ├── user.entity.ts
-│   ├──user.module.ts
-│   └──query.ts
-└── swiftchat/
-    ├── swiftchat.module.ts
-    └── swiftchat.service.ts
-
-```
-
-# Link
-* [Documentation](https://app.clickup.com/43312857/v/dc/199tpt-7824/199tpt-19527)
 
