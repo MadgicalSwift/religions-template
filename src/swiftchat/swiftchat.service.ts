@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import * as dotenv from 'dotenv';
-import { LocalizationService } from 'src/localization/localization.service';
-import { MessageService } from 'src/message/message.service';
+import { LocalizationService } from '../localization/localization.service';
+import { MessageService } from '../message/message.service';
 
 dotenv.config();
 
@@ -22,7 +22,9 @@ export class SwiftchatMessageService extends MessageService {
     };
   }
   async sendWelcomeMessage(from: string, language: string) {
+    console.log(language)
     const localisedStrings = LocalizationService.getLocalisedString(language);
+    //console.log(localisedStrings)
     const requestData = this.prepareRequestData(
       from,
       localisedStrings.welcomeMessage,

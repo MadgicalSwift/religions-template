@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
 import * as dotenv from 'dotenv';
-import { LocalizationService } from 'src/localization/localization.service';
+import { LocalizationService } from '../localization/localization.service';
 
 dotenv.config();
 

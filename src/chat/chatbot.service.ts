@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { LocalizationService } from 'src/localization/localization.service';
-import { MessageService } from 'src/message/message.service';
-import { UserService } from 'src/model/user.service';
+import { LocalizationService } from '../localization/localization.service';
+import { MessageService } from '../message/message.service';
+import { UserService } from '../model/user.service';
 import { askMeFlowService } from './askMeFlow';
 @Injectable()
 export class ChatbotService {
@@ -31,8 +31,8 @@ export class ChatbotService {
     const localisedStrings = await LocalizationService.getLocalisedString(
       userData.language,
     );
-
     if(!button_response && !persistent_menu_response && body.text.body === "hi"){
+      console.log("welcome:",userData.language)
       await this.message.sendWelcomeMessage(from,userData.language)
       await this.message.sendMainMenuMessage(from, userData.language)
     }
@@ -49,7 +49,8 @@ export class ChatbotService {
     }
     else if(button_response && localisedStrings.button_categories.includes(button_response.body)){
       await this.message.sendPredefinedQuestionResponse(from,UserData.language,button_response.body);
-      await this.userService.updateButtonResponse(from, botID,localisedStrings.button_categories[0]);
+      //await this.userService.updateButtonResponse(from, botID,localisedStrings.button_categories[0]);
+      await this.message.backToMainMenu(from, userData.language);
     }
     else if(button_response && localisedStrings.languageButtons.includes(button_response.body)){
       let language= await this.userService.saveLanguage(from, botID, button_response.body);
