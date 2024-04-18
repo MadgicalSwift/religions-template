@@ -51,8 +51,8 @@ export const localisedStrings = {
     },
     {
       type: 'solid',
-      body: 'Chosse language',
-      reply: 'Chosse language',
+      body: 'Choose language',
+      reply: 'Choose language',
     },
   ],
 
@@ -61,7 +61,7 @@ export const localisedStrings = {
   greetings:['hi','hello','hey','hola','namastey'],
   languageButtons: ['Hindi','English'],
   button_categories:[
-    "How does karma influence Hinduism?","Significance of Islams Five Pillars?","Main principles of Buddhisms Eightfold Path?","Importance of tikkun olam in Judaism?","Choose Language"
+    "How does karma influence Hinduism?","Significance of Islams Five Pillars?","Main principles of Buddhisms Eightfold Path?","Importance of tikkun olam in Judaism?",
   ],
   answer:["In Hinduism, karma is the idea that actions have consequences. It's like a moral law that influences how life unfolds. Good deeds lead to positive outcomes, while bad deeds result in negative consequences. Karma also affects the cycle of reincarnation, determining the circumstances of future lives based on past actions. It's a fundamental concept guiding moral behavior and spiritual progress in Hindu beliefs.","The Five Pillars hold immense significance in Islam, serving as the foundation of Muslim faith and practice. These pillars include the declaration of faith, prayer, charity, fasting, and pilgrimage to Mecca. They symbolize the core principles of Islam, guiding believers towards spiritual growth, devotion, and unity within the Muslim community.","In Buddhism, the Eightfold Path represents the fundamental principles guiding followers towards enlightenment and liberation from suffering. This path encompasses eight interconnected aspects, including right understanding, intention, speech, action, livelihood, effort, mindfulness, and concentration. By following these principles, Buddhists aim to cultivate wisdom, ethical conduct, and mental discipline on their spiritual journey.",
  "Tikkun olam, a key concept in Judaism, underscores the importance of repairing the world and promoting social justice and compassion. Rooted in the belief that humans are partners with God in the ongoing process of creation, tikkun olam inspires Jews to engage in acts of kindness, charity, and ethical behavior to improve society and contribute positively to the world around them."]

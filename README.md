@@ -37,23 +37,36 @@ DB_PASSWORD=DB_PASSWORD
 # Webhook URL Setup
 Here's a step-by-step guide to get you started smoothly:
 
-1. ### Sign up for Ngrok: 
+ 1. ### Sign up for Ngrok: 
 Begin by accessing this URL and creating an account on Ngrok. Follow the sign-up process diligently to acquire your authorization token.
 
-2. ### Configure Ngrok: 
+ 2. ### Configure Ngrok: 
 Open your terminal and input the commandngrok config add-authtoken <TOKEN>, replacing <TOKEN> with your authorization token. This step authorizes Ngrok to function properly
 
-3. Open a new terminal and run this command:
+ 3. Open a new terminal and run this command:
 ngrok http 3000. This will generate a forwarding URL. Copy and save this.
 
-4. Open Postman or any other API platform
+ 4. Open Postman or any other API platform
 
-5. Generate a new PUT request and insert the API https://v1-api.swiftchat.ai/api/bots/<bot-id>/webhook-url into the URL field, ensuring to replace <bot-id> with your specific bot ID.
+ 5. Generate a new PUT request and insert the API https://v1-api.swiftchat.ai/api/bots/<bot-id>/webhook-url into the URL field, ensuring to replace <bot-id> with your specific bot ID.
 
-6. Add the Bearer API-Key in the authorization tab
+ 6. Add the Bearer API-Key in the authorization tab
 
-7. Add this to the body and send the request. By doing so, the webhook URL will be in the bot for sending and receiving responses.
+ 7. Add this to the body and send the request. By doing so, the webhook URL will be in the bot for sending and receiving responses.
 `{"webhook_url": "<Forwarding URL/religiousChatbot>"}`
+
+ ## Using Cloud Services:
+ You can deploy your application on cloud platforms like Heroku, AWS, Google Cloud Platform, Microsoft Azure, or DigitalOcean for easy accessibility and scalability. Here's how you can do it:
+
+  1. Heroku: Sign up for a Heroku account, install the Heroku CLI, and deploy your application using Git or Docker.
+
+  2. AWS (Amazon Web Services): Create an AWS account, navigate to AWS Management Console, choose the appropriate service (e.g., EC2, Elastic Beanstalk), and follow the deployment instructions.
+
+  3. Google Cloud Platform: Sign up for a Google Cloud Platform account, navigate to the Google Cloud Console, create a project, select a compute service (e.g., App Engine, Compute Engine), and deploy your application.
+
+  4. Microsoft Azure: Create a Microsoft Azure account, navigate to the Azure Portal, create a new web app, configure deployment options (e.g., FTP, Git), and deploy your application.
+
+  5. DigitalOcean: Sign up for a DigitalOcean account, create a Droplet (virtual machine), SSH into the Droplet, and deploy your application using your preferred method (e.g., Git, Docker).
 
 
 # Understanding the Flow
@@ -79,12 +92,14 @@ Let's explore the operational flow of the religious chatbot template to understa
    - Within the i18n folder, you'll find files for English and possibly other languages.
    - Open the English-localized file, which contains all the text strings and button labels used in our chatbot template.
    - Update the strings like the `welcomeMessage`, `askMeResponse`, `questionsDefaultString`, `mainMenuHeading`, `button_categories`.
+   - Make similar change in Hindi file
 
  ## Update buttons:
    - Open the same file within the cloned repository. Look for the section where buttons are defined, typically labeled as `predefinedQuestions`.
    - Within this section, you'll find an array of button objects representing the main menu options which includes some predefined questions and other options.
    - To add or update buttons, simply modify the existing objects or add new ones as needed. Each button object typically includes properties such as type, body (display text), and reply (the message sent back to the bot when the button is clicked).
    - You can customize the button options according to your requirements. For example, you may want to add more predefined questions button remove any.
+   - Make similar change in Hindi file
 
  ## To add or update predefined question buttons and their answers:
 
@@ -92,16 +107,15 @@ Let's explore the operational flow of the religious chatbot template to understa
   - Add or update the predefined questions by modifying the contents of the `predefinedQuestions` array. Each question should be represented as a button object with properties like type, body, and reply.
   - After updating the predefinedQuestions array, make corresponding changes in the `button_categories` list to reflect the updated questions. Each entry in the `button_categories` list should align with the corresponding question in the predefinedQuestions array.
   - Additionally, ensure that the answers to the predefined questions are updated accordingly in the `answer` list. The answers should be arranged in the answers list in the same order as the corresponding questions in the predefinedQuestions array.
+  - Make similar change in Hindi file
 
 ## AskMeFlow
 
-  - The `AskMeFlow.ts` file in the chat folder handles the flow for asking a new question. Here's how you can update it:
+  - The `swiftchat.service.ts` file contains some functions that handles the flow for asking a new question. Here's how you can update it:
 
   - `sendAskMeMessage` Function: Update the `sendAskMeMessage` function to fetch and display the prompt for users to ask a new question. This function prompts users to enter their question and sends it to the chatbot for processing.
 
   - `sendQuestionResponse` Function: Modify the `sendQuestionResponse` function to handle the responses to new questions. After receiving a question from the user, this function fetches a demo response and sends it back to the user.
-
-  - Integration with `Chatbot.service.ts `File: When updating the AskMeFlow file, ensure that it integrates seamlessly with the main chatbot file. Update the parameters and function calls in the chatbot file to reflect the changes made in the AskMeFlow file.
 
 
 # All Set!
