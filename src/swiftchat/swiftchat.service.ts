@@ -22,9 +22,7 @@ export class SwiftchatMessageService extends MessageService {
     };
   }
   async sendWelcomeMessage(from: string, language: string) {
-    console.log(language)
     const localisedStrings = LocalizationService.getLocalisedString(language);
-    //console.log(localisedStrings)
     const requestData = this.prepareRequestData(
       from,
       localisedStrings.welcomeMessage,
@@ -128,22 +126,53 @@ export class SwiftchatMessageService extends MessageService {
   ) {
     const localisedStrings = LocalizationService.getLocalisedString(language);
     const button_categories = localisedStrings.button_categories;
-    console.log(button_categories);
+  
     const answer_list = localisedStrings.answer;
 
     const questionIndex = button_categories.indexOf(question);
-    console.log(questionIndex);
+
 
     if (questionIndex === -1) {
       throw new Error('Question not found');
     }
 
     const answerIndex = answer_list[questionIndex];
-    console.log(answerIndex);
+
 
     const requestData = this.prepareRequestData(
       from,
       answerIndex, // Adjusting index since arrays are 0-indexed
+    );
+
+    const response = await this.sendMessage(
+      this.baseUrl,
+      requestData,
+      this.apiKey,
+    );
+    return response;
+  }
+  async sendAskmeMessage (from: string, language: string) {
+    const localisedStrings = LocalizationService.getLocalisedString(language);
+
+    const requestData = this.prepareRequestData(
+      from,
+      localisedStrings.askMeResponse,
+    );
+
+    const response = await this.sendMessage(
+      this.baseUrl,
+      requestData,
+      this.apiKey,
+    );
+    return response;
+  };
+
+  async sendQuestionRespone(question: string, language: string, from: string) {
+    const localisedStrings = LocalizationService.getLocalisedString(language);
+
+    const requestData = this.prepareRequestData(
+      from,
+      localisedStrings.questionsDefaultString,
     );
 
     const response = await this.sendMessage(
